@@ -26,9 +26,6 @@ if uploaded_file:
     st.table(df)
 
 
-
-
-
 st.sidebar.header('User Input Parameters')
 
 def user_input_features():
