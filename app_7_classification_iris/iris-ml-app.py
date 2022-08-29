@@ -1,25 +1,45 @@
-import streamlit as st
+from collections import namedtuple
+import altair as alt
+import math
 import pandas as pd
-from sklearn import datasets
-#from sklearn.ensemble import RandomForestClassifier
+import streamlit as st
+from sklearn.ensemble import RandomForestClassifier
 
 st.write("""
-# Simple Iris Flower Prediction App
-
-This app predicts the **Iris flower** type!
+# APL App
+Esta app permitirá identificar agentes que tengan mayor probabilidad de retirarse voluntariamente de Atlantic QI
+De esta manera se realizarán actividades que ayuden a los agentes a reencontrar su amor por AQI. :heart:
+Mientras tanto, hagamos un ejemplo de lo que se puede hacer con unas pocas lineas de codigo:
 """)
+
+# uploaded_file = st.file_uploader("Choose a file")
+# if uploaded_file is not None:
+#     df1=pd.read_excel(filename)
+# else:
+#     st.warning("you need to upload a csv or excel file.")
+uploaded_file = st.file_uploader("Choose a XLSX file", type="xlsx")
+
+if uploaded_file:
+    df = pd.read_excel(uploaded_file)
+
+    st.dataframe(df)
+    st.table(df)
+
+
+
+
 
 st.sidebar.header('User Input Parameters')
 
 def user_input_features():
-    sepal_length = st.sidebar.slider('Sepal length', 4.3, 7.9, 5.4)
-    sepal_width = st.sidebar.slider('Sepal width', 2.0, 4.4, 3.4)
-    petal_length = st.sidebar.slider('Petal length', 1.0, 6.9, 1.3)
-    petal_width = st.sidebar.slider('Petal width', 0.1, 2.5, 0.2)
-    data = {'sepal_length': sepal_length,
-            'sepal_width': sepal_width,
-            'petal_length': petal_length,
-            'petal_width': petal_width}
+    AHT = st.sidebar.slider('AHT', 4.3, 7.9, 5.4)
+    AUS = st.sidebar.slider('AUS', 2.0, 4.4, 3.4)
+    ADH = st.sidebar.slider('ADH', 1.0, 6.9, 1.3)
+    Active_months = st.sidebar.slider('Active_months', 0.1, 2.5, 0.2)
+    data = {'sepal_length': AHT,
+            'sepal_width': AUS,
+            'petal_length': ADH,
+            'petal_width': Active_months}
     features = pd.DataFrame(data, index=[0])
     return features
 
